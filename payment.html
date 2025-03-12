@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .payment-option {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .payment-option input[type="radio"] {
+            display: none;
+        }
+        .payment-option label {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .payment-option label img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .payment-option input[type="radio"]:checked + label {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+        .additional-features {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .additional-features label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .additional-features label input[type="radio"] {
+            margin-right: 10px;
+        }
+        .payment-button {
+            display: none;
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .payment-button:hover {
+            background-color: #0056b3;
+        }
+        img{
+            aspect-ratio: 3/2;
+            object-fit: contain;
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+        }
+        #additional-features-credit-card input{
+            width: 60%;
+            height: 20px;
+            background: #e0dede;
+            justify-content: center;
+            display: flex;
+            margin: 20px auto;
+            padding: 10px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+        }
+        #additional-features-debit-card input,select{
+            width: 60%;
+            height: 20px;
+            background: #e0dede;
+            justify-content: center;
+            display: flex;
+            margin: 20px auto;
+            padding: 10px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Select Payment Option</h2>
+    <div class="payment-option">
+        <input type="radio" id="upi" name="payment-method" value="upi" onchange="showAdditionalFeatures()">
+        <label for="upi">
+            UPI
+        </label>
+        <input type="radio" id="credit-card" name="payment-method" value="credit-card" onchange="showAdditionalFeatures()">
+        <label for="credit-card">
+            Credit Card
+        </label>
+        <input type="radio" id="debit-card" name="payment-method" value="debit-card" onchange="showAdditionalFeatures()">
+        <label for="debit-card">
+            Debit Card
+        </label>
+    </div>
+    
+    <div id="additional-features-upi" class="additional-features">
+        <p>Choose UPI App:</p>
+        <label class="pay">
+            <input type="radio" name="upi-app" value="PhonePe">
+            <img src="/Travel Crew/Images/logos/phonepe.png" alt="PhonePe">
+            PhonePe
+        </label><br>
+        <label class="pay">
+            <input type="radio" name="upi-app" value="Paytm">
+            <img src="/Travel Crew/Images/logos/paytm.png" alt="Paytm">
+            Paytm
+        </label><br>
+        <label class="pay">
+            <input type="radio" name="upi-app" value="Google Pay">
+            <img src="/Travel Crew/Images/logos/googlepay.png" alt="Google Pay">
+            Google Pay
+        </label><br>
+    </div>
+
+    <div id="additional-features-credit-card" class="additional-features">
+        <p>Enter Credit Card Details:</p>
+        <select id="card-type" name="card-type">
+            <option value="mastercard">Mastercard</option>
+            <option value="rupay">RuPay</option>
+            <option value="visa">Visa</option>
+            <option value="maestro">Maestro</option>
+        </select><br>
+        <label for="credit-card-number">Card Number:</label>
+        <input type="text" id="credit-card-number" name="credit-card-number"><br>
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv"><br>
+    </div>
+
+    <div id="additional-features-debit-card" class="additional-features">
+        <p>Enter Debit Card Details:</p>
+        <label for="card-type">Card Type:</label>
+        <select id="card-type" name="card-type">
+            <option value="mastercard">Mastercard</option>
+            <option value="rupay">RuPay</option>
+            <option value="visa">Visa</option>
+            <option value="maestro">Maestro</option>
+        </select><br>
+        <label for="debit-card-number">Card Number:</label>
+        <input type="text" id="debit-card-number" name="debit-card-number"><br>
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv"><br>
+    </div>
+
+    <button id="payButton" class="payment-button" onclick="makePayment()">Proceed to Pay</button>
+</div>
+
+<script>
+    function showAdditionalFeatures() {
+        var selectedOption = document.querySelector('input[name="payment-method"]:checked').value;
+        var upiFeatures = document.getElementById("additional-features-upi");
+        var creditCardFeatures = document.getElementById("additional-features-credit-card");
+        var debitCardFeatures = document.getElementById("additional-features-debit-card");
+        var payButton = document.getElementById("payButton");
+
+        // Hide all additional features initially
+        document.querySelectorAll('.additional-features').forEach(function(el) {
+            el.style.display = 'none';
+        });
+        payButton.style.display = "none";
+
+        if (selectedOption === "upi") {
+            upiFeatures.style.display = "block";
+            payButton.style.display = "block";
+        } else if (selectedOption === "credit-card") {
+            creditCardFeatures.style.display = "block";
+            payButton.style.display = "block";
+        } else if (selectedOption === "debit-card") {
+            debitCardFeatures.style.display = "block";
+            payButton.style.display = "block";
+        }
+    }
+
+    function makePayment() {
+        var selectedOption = document.querySelector('input[name="payment-method"]:checked').value;
+        if (selectedOption) {
+            alert("Redirecting to " + selectedOption + " payment gateway...");
+            // Here you can implement the redirection to the actual payment gateway
+        } else {
+            alert("Please select a payment option.");
+        }
+    }
+</script>
+
+</body>
+</html>

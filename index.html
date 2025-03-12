@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Crew</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f8f8f8;
+            background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url("Images/States/Goa/main.jpg");
+        }
+        
+        header {
+            position: relative; /* Set the position to relative for the z-index to work properly */
+            z-index: 10; /* Ensure the header is above other elements */
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.8); /* Make navbar background transparent */
+            padding: 1em 0;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0; /* Reset the margin for the navbar */
+            padding: 0;
+            overflow: hidden; /* Clear the floated list items */
+        }
+        
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: #757070;
+            text-decoration: none;
+        }
+        
+        #home {
+            background-image: url('Images/logos/wallpaperflare.com_wallpaper\ \(2\).jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 100px 20px;
+            text-align: center;
+            height: 100vh;
+            margin-top: -70px; /* Adjust this value if necessary */
+        }
+        
+        input, textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        
+        footer {
+            background-color: #038fae; /* Moved the background color here from header, footer */
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            margin-top: 20px;
+        }
+        
+        h1, p {
+            color: #545353;
+        }
+        li a:hover{
+            color: #000000;
+        }
+
+        
+        .slider-container {
+            width: 80%;
+            margin: 50px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .slide {
+            flex: 0 0 25%; /* 4 images visible at a time */
+            max-width: 25%;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            padding: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    
+        .prev-btn {
+            left: 0;
+        }
+    
+        .next-btn {
+            right: 0;
+        }
+        /* Your existing CSS styles */
+        /* Add new styles for modal */
+        .modal-dialog {
+            margin-top: 100px;
+        }
+
+        .modal-content {
+            border-radius: 10px;
+        }
+
+        .modal-header, .modal-footer {
+            border: none;
+        }
+
+        .modal-content{
+            background-image: url('Images/logos/wallpaperflare.com_wallpaper\ \(2\).jpg');
+            
+        }
+
+        /*modal */
+        .container {
+            width: 400px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px auto;
+            box-shadow: 0px 0px 10px rgba(0,0,0,1);
+        }
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .container input[type="text"], .container input[type="number"], .container input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #2b13ae;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .container input[type="submit"]:hover {
+            transition: .5 ease-in;
+            background-color: #195aff;
+        }
+        
+        footer .social{
+            display: flex;
+            aspect-ratio: 3/2;
+            object-fit: contain;
+            mix-blend-mode: color-burn;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            width: 50px;
+            margin: 10px;
+        }
+        footer .foot{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html" target="_blank">Group Tours</a></li>
+                <li><a href="#" data-bs-toggle="modal" data-bs-target="#customTripModal">Customised Tours</a></li>
+                <li><a href="aboutUs.html" target="_blank">About Us</a></li>
+                <li><a href="login.html" target="_blank">Log In / Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home">
+        <h1 style="font-size:xx-large;"><b>Welcome to Travel Crew</b></h1>
+        <p>Explore the world with us. Start your next adventure.</p>
+    </section>
+
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide"><img src="Images/Home Package/goa pack.jpg" alt="Image 1"></div>
+            <div class="slide"><img src="Images/Home Package/kashmir Pack.jpg" alt="Image 2"></div>
+            <div class="slide"><img src="Images/Home Package/kedarnath pack.jpg" alt="Image 3"></div>
+            <div class="slide"><img src="Images/Home Package/manali Pack.jpg" alt="Image 4"></div>
+            <div class="slide"><img src="Images/Home Package/spiti pack.jpg" alt="Image 3"></div>
+            <div class="slide"><img src="Images/Home Package/valley of flower pack.jpg" alt="Image 4"></div>
+            <!-- Clone of the first slide -->
+            <div class="slide"><img src="Images/Home Package/goa pack.jpg" alt="Image 1"></div>
+            <div class="slide"><img src="Images/Home Package/kashmir Pack.jpg" alt="Image 2"></div>
+            <div class="slide"><img src="Images/Home Package/kedarnath pack.jpg" alt="Image 3"></div>
+            <div class="slide"><img src="Images/Home Package/manali Pack.jpg" alt="Image 4"></div>
+            <div class="slide"><img src="Images/Home Package/spiti pack.jpg" alt="Image 3"></div>
+            <div class="slide"><img src="Images/Home Package/valley of flower pack.jpg" alt="Image 4"></div>
+        </div>
+        <button class="nav-btn prev-btn" onclick="prevSlide()">&#10094;</button>
+        <button class="nav-btn next-btn" onclick="nextSlide()">&#10095;</button>
+    </div>
+
+    <footer>
+        <div class="foot">
+        <a href="https://www.facebook.com/profile.php?id=61556718552631&mibextid=LQQJ4d" target="_blank"><img src="Images/logos/ffb.jpg" alt="fb" class="social"></a>
+        <a href="https://www.instagram.com/travelll_crew?igsh=MWd6eWNxajc2ZmM1OQ%3D%3D&utm_source=qr" target="_blank"><img src="Images/logos/ins.jpg" alt="insta" class="social"></a>
+        <a href="https://youtube.com/@AK-0747?si=eNinZCZqZQKtBf-g" target="_blank"><img src="Images/logos/utubee.jpg" alt="youtube" class="social"></a>
+        </div>
+        <p>&copy; 2024 Travel Agency. All rights reserved.</p>
+    </footer>
+
+    <!-- Modal for Custom Trip -->
+    <div class="modal fade" id="customTripModal" tabindex="-1" aria-labelledby="customTripModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Insert your custom trip form HTML code here -->
+                        <div class="container">
+                            <h2>Customize your Trip</h2>
+                            <form method="post" action="/custom">
+                                <label for="username">Name:</label>
+                                <input type="text" id="username" name="username">
+                                <label for="mobNo">Mobile Number:</label>
+                                <input type="number" id="num" name="number">
+                                <label for="email">Email:</label>
+                                <input type="text" id="email" name="email">
+                                <label for="st_date">Starting Date:</label>
+                                <input type="date" id="date" name="s_date">
+                                <label for="st_date">Ending Date:</label>
+                                <input type="date" id="date" name="e_date">
+                                <label for="pick">Pickup Destination:</label>
+                                <input type="text" name="pickup" id="pickup">
+                                <label for="pick">No of Traveller:</label>
+                                <input type="text" name="no_traveller" id="no_tra">
+                                <label for="pick">Trip Details:</label>
+                                <textarea name="trip_details" id="" cols="38" rows="3"></textarea>
+                                <input type="submit" value="Request a callback">
+                            </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <!-- You can add additional buttons if needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Your existing JavaScript code for slider
+        const slider = document.querySelector('.slider');
+        const slides = document.querySelectorAll('.slide');
+        const slideWidth = slides[0].clientWidth;
+        let counter = 0;
+    
+        function nextSlide() {
+            if (counter >= slides.length-4) {
+                counter = 0; // Reset counter to loop back to the first image
+                slider.style.transition = 'none'; // Disable transition for seamless loop
+                slider.style.transform = `translateX(-${slideWidth * counter}px)`;
+                setTimeout(() => {
+                    slider.style.transition = 'transform 0.5s ease'; // Re-enable transition
+                }, 0);
+            } else {
+                counter++;
+                slider.style.transform = `translateX(-${slideWidth * counter}px)`;
+            }
+        }
+    
+        function prevSlide() {
+            if (counter <= 0) {
+                counter = slides.length - 1; // Move to the last slide
+                slider.style.transition = 'none'; // Disable transition for seamless loop
+                slider.style.transform = `translateX(-${slideWidth * counter}px)`;
+                setTimeout(() => {
+                    slider.style.transition = 'transform 0.5s ease'; // Re-enable transition
+                }, 0);
+            } else {
+                counter--;
+                slider.style.transform = `translateX(-${slideWidth * counter}px)`;
+            }
+        }
+    
+        setInterval(nextSlide, 2000);
+    </script>
+    
+</body>
+</html>

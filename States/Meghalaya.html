@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meghalaya</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 10px;
+            padding: 0;
+            padding-left: 100px;
+            padding-right: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main1,
+        .main2 {
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap to the next line */
+            justify-content: center;
+            margin-top: 30px;
+            gap: 20px;
+        }
+
+        .box1 {
+            height: auto; /* Changed height to auto for responsiveness */
+            max-width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            flex-grow: 1; /* Allow boxes to grow to fill available space */
+        }
+
+        .box1:hover {
+            transform: translateY(-5px);
+        }
+
+        .box1 h1 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            color: #333;
+        }
+
+        h3 {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .box1 h3 {
+            font-size: 14px;
+            color: #666;
+            display: inline;
+            padding-bottom: 10px;
+        }
+
+        img {
+            max-width: 100%; /* Make images responsive */
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        li a:hover {
+            color: #000000;
+        }
+
+        button {
+            border: none;
+            border-radius: 30px;
+            background-color: #7859ea;
+            padding: 10px 20px;
+            cursor: pointer;
+            color: #f9f7fb;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: rgb(196, 153, 196);
+        }
+
+        @media screen and (max-width: 600px) {
+            .box1 {
+                max-width: calc(50% - 20px); /* Adjusted for smaller screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to Meghalaya</h1>
+    <h3>Meghalaya is a state in northeastern India, known for its picturesque landscapes, lush forests, and abundant rainfall. It is bordered by Assam to the north and east and Bangladesh to the south and west. Meghalaya is famous for its scenic hill stations, cascading waterfalls, living root bridges, and unique tribal cultures.
+        In terms of domain names, entities based in Meghalaya can use the .in domain to denote their Indian affiliation. Similarly, they can use .com or other generic top-level domains (TLDs) for their websites, depending on their preferences and the nature of their online presence.</h3>
+    <div class="main1">
+        <div class="box1">
+            <img id="b1" src="../Images/States/Meghalaya/cherapunji.jpg" alt="">
+            <h1>Kamakhya-Kaziranga-Kakochang</h1>
+            <h3>6D / 5N</h3><br><br>
+            <h3>Accommodation | Breakfast | Lunch | AC Transport | Sight Seeing</h3>
+            <br><br>
+            <h3 style="color: #ff4646;">₹6999</h3>
+            <br><br>
+            <a href="../States Trip Details/Meghalaya/meghalaya.html" target="_blank"><button>Quick Details >></button></a>
+            <br><br>
+            <a href="http://127.0.0.1:5500/Travel%20Crew/payment.html"><button>Book Trip</button></a>
+        </div>
+    </div>
+
+    
+</body>
+
+</html>

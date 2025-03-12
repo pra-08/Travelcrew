@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    margin: 10px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main1, .main2 {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+.box1 {
+    height: 220px;
+    max-width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.box1:hover {
+    transform: translateY(-5px);
+}
+
+.box1 h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: bold;
+}
+
+.box1 h3 {
+    font-size: 14px;
+    color: #666;
+}
+
+img {
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.heading {
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #000000;
+}
+
+header {
+    position: relative;
+    z-index: 10;
+}
+
+.navbar {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1em 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #757070;
+    text-decoration: none;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="./index.html" >Home</a></li>
+                <li><a href="aboutUs.html" >About Us</a></li>
+                <li><a href="./login.html" >Log In / Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <p class="heading"><b>Destinations</b></p>
+<div class="main1">
+    <!--<a href="States/jammu.html" ><div class="box1">
+        <img id="b1" src="Images/States/Jammu & Kashmir/main.jpg" alt="">
+        <h1>Jammu & Kashmir</h1>
+    </div></a>
+    <a href="States/Uttarakhand.html" ><div class="box1">
+        <img id="b2" src="Images/States/Uttarakhand/nainital.jpg" alt="">
+        <h1>Uttarakhand</h1>
+    </div></a>-->
+    <a href="States/Himachal.html" ><div class="box1">
+        <img id="b3" src="Images/States/Himachal Pradesh/main.jpg" alt="">
+        <h1>Himachal Pradesh</h1>
+    </div></a>
+    <a href="States/Rajasthan.html" ><div class="box1">
+        <img id="b4" src="Images/States/Rajasthan/main.jpeg" alt="">
+        <h1>Rajasthan</h1>
+    </div></a>
+    <a href="States/Uttarpradesh.html" ><div class="box1">
+        <img id="b5" src="Images/States/Uttarpradesh/main.jpg" alt="">
+        <h1>Uttar Pradesh</h1>
+    </div></a>
+    <a href="States/Maharashtra.html" ><div class="box1">
+        <img id="b7" src="Images/States/Maharashtra/main.jpg" alt="">
+        <h1>Maharashtra</h1>
+    </div></a>
+</div>
+<div class="main2">
+    <a href="States/Madhyapradesh.html" ><div class="box1">
+        <img id="b6" src="Images/States/Madhyapradesh/main.jpg" alt="">
+        <h1>Madhya Pradesh</h1>
+    </div></a>
+    <a href="States/Sikkim.html" ><div class="box1">
+        <img id="b8" src="Images/States/Sikkim/main.jpg" alt="">
+        <h1>Sikkim</h1>
+    </div></a>
+    <a href="States/Kerala.html" ><div class="box1">
+        <img id="b9" src="Images/States/Goa/main.jpg" alt="">
+        <h1>Kerala</h1>
+    </div></a>
+    <a href="States/Assam.html" ><div class="box1">
+        <img id="b10" src="Images/States/Assam/main.jpg" alt="">
+        <h1>Assam</h1>
+    </div></a>
+</div>
+
+<div class="main2">
+    <a href="States/Andaman.html" ><div class="box1">
+        <img id="b6" src="Images/States/Andaman & Nicobar/main.jpg" alt="">
+        <h1>Andaman & Nicobar</h1>
+    </div></a>
+    <a href="States/Lakshadweep.html" ><div class="box1">
+        <img id="b7" src="Images/States/Laksadweep/main.jpg" alt="">
+        <h1>Lakshdweep</h1>
+    </div></a>
+    <a href="States/Tamilnadu.html" ><div class="box1">
+        <img id="b8" src="Images/States/Tamilnadu/main.jpg" alt="">
+        <h1>Tamilnadu</h1>
+    </div></a>
+    <a href="States/Meghalaya.html" ><div class="box1">
+        <img id="b8" src="Images/States/Meghalaya/main.jpg" alt="">
+        <h1>Meghalaya</h1>
+    </div></a>
+</div>
+</body>
+</html>

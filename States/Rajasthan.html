@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rajasthan</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 10px;
+                padding: 0;
+                padding-left: 100px;
+                padding-right: 100px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+    
+            .main1,
+            .main2 {
+                display: flex;
+                flex-wrap: wrap; /* Allow items to wrap to the next line */
+                justify-content: center;
+                margin-top: 30px;
+                gap: 20px;
+            }
+    
+            .box1 {
+                height: auto; /* Changed height to auto for responsiveness */
+                max-width: 250px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                background-color: #fff;
+                padding: 20px;
+                text-align: center;
+                transition: transform 0.3s ease;
+                flex-grow: 1; /* Allow boxes to grow to fill available space */
+            }
+    
+            .box1:hover {
+                transform: translateY(-5px);
+            }
+    
+            .box1 h1 {
+                font-size: 20px;
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+                color: #333;
+            }
+    
+            h3 {
+                font-size: 14px;
+                color: #666;
+                margin-top: 10px;
+            }
+    
+            .box1 h3 {
+                font-size: 14px;
+                color: #666;
+                display: inline;
+                padding-bottom: 10px;
+            }
+    
+            img {
+                max-width: 100%; /* Make images responsive */
+                border-radius: 8px;
+                margin-bottom: 10px;
+            }
+    
+            a {
+                text-decoration: none;
+            }
+    
+            li a:hover {
+                color: #000000;
+            }
+    
+            button {
+                border: none;
+                border-radius: 30px;
+                background-color: #7859ea;
+                padding: 10px 20px;
+                cursor: pointer;
+                color: #f9f7fb;
+                text-transform: uppercase;
+                font-size: 14px;
+            }
+    
+            button:hover {
+                background-color: rgb(196, 153, 196);
+            }
+    
+            @media screen and (max-width: 600px) {
+                .box1 {
+                    max-width: calc(50% - 20px); /* Adjusted for smaller screens */
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome to Rajasthan</h1>
+        <h3>Rajasthan is a vibrant state located in the northwest part of India, known for its rich history, colorful culture, and stunning desert landscapes. It is the largest state in India by area and is often referred to as the "Land of Kings" due to its royal heritage.
+            Rajasthan's cuisine is another highlight, featuring delicious dishes like dal bati churma, gatte ki sabzi, and laal maas. Its traditional arts and crafts, including intricate textiles, pottery, and jewelry, are celebrated worldwide.
+            Overall, Rajasthan offers a unique blend of history, culture, and natural beauty, making it a popular destination for tourists from around the globe.
+        </h3>
+        <div class="main1">
+            <div class="box1">
+                <img id="b1" src="../Images/States/Rajasthan/jaisalmer.jpg" alt="">
+                <h1>Jaipur-Udaipur-Jaisalmer</h1>
+                <h3>7D / 6N</h3><br><br>
+                <h3>Accommadation | Breakfast | Lunch | AC Transport | Sight Seeing</h3>
+                <br><br>
+                <h3 style="color: #ff4646;">₹6999</h3>
+                <br><br>
+                <a href="../States Trip Details/Rajasthan/Jai-Udai-Jais.html" target="_blank"><button>Quick Details >></button></a>
+                <br><br>
+            <a href="http://127.0.0.1:5500/Travel%20Crew/payment.html"><button>Book Trip</button></a>
+            </div>
+            <div class="box1">
+                <img id="b2" src="../Images/States/Rajasthan/udaipur.jpg" alt="">
+                <h1>Jaipur-Udaipur</h1>
+                <h3>5D / 4N</h3><br><br>
+                <h3>Accommadation | Breakfast | Lunch | AC Transport | Sight Seeing</h3>
+                <br><br>
+                <h3 style="color: #ff4646;">₹3499</h3>
+                <br><br>
+                <a href="../States Trip Details/Rajasthan/Jai-Udai.html" target="_blank"><button>Quick Details >></button></a>
+                <br><br>
+            <a href="http://127.0.0.1:5500/Travel%20Crew/payment.html"><button>Book Trip</button></a>
+            </div>
+</body>
+</html>
