@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LogIN/SignUP</title>
+    <!-- Add Supabase JS libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         body{
             margin: 0;
@@ -88,7 +90,12 @@
         #chk:checked~ .login{
             transform: translateY(-500px);
         }
-
+        .error-message {
+            color: #ff3333;
+            text-align: center;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -96,23 +103,88 @@
         <input type="checkbox" id="chk" aria-hidden="true">
 
         <div class="signup">
-            <form action="/signup" method="post">
+            <form id="signup-form">
                 <label for="chk" aria-hidden="false">Sign Up</label>
-                <input type="text" name="username" placeholder="Username" required="">
-                <input type="email" name="email" placeholder="Email" required="">
-                <input type="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters" required="">
-                <button>Sign Up</button>
+                <input type="text" name="username" id="signup-username" placeholder="Username" required="">
+                <input type="email" name="email" id="signup-email" placeholder="Email" required="">
+                <input type="password" name="password" id="signup-password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters" required="">
+                <button type="submit">Sign Up</button>
+                <div id="signup-error" class="error-message"></div>
             </form>
         </div>
 
         <div class="login">
-            <form action="/login" method="post">
-                <label for="chk" aria-hidden="true" >Login</label>
-                <input type="email" name="email" placeholder="Email" required="">
-                <input type="password" name="password" placeholder="Password" required="">
-                <button>Log In</button> 
+            <form id="login-form">
+                <label for="chk" aria-hidden="true">Login</label>
+                <input type="email" name="email" id="login-email" placeholder="Email" required="">
+                <input type="password" name="password" id="login-password" placeholder="Password" required="">
+                <button type="submit">Log In</button>
+                <div id="login-error" class="error-message"></div>
             </form>
         </div>
     </div>
+
+    <script>
+        // Initialize Supabase client
+        const supabaseUrl = 'https://whhscjpbnkgdraieveov.supabase.co'; // Replace with your Supabase URL
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndoaHNjanBibmtnZHJhaWV2ZW92Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUzMzUyMjQsImV4cCI6MjA2MDkxMTIyNH0.dF_-m-uSsVMwyBVN8CTzqCBYYUrIFH3KfeTINlKsxns'; // Replace with your public anon key
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        // Sign Up Form
+        document.getElementById('signup-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const username = document.getElementById('signup-username').value;
+            
+            try {
+                // Sign up the user
+                const { data, error } = await supabase.auth.signUp({
+                    email: email,
+                    password: password,
+                    options: {
+                        data: {
+                            username: username
+                        }
+                    }
+                });
+
+                if (error) throw error;
+                
+                // If successful, show a success message or redirect
+                console.log('Signup successful!', data);
+                window.location.href = '/index.html'; // Redirect to home page
+            } catch (error) {
+                console.error('Error during signup:', error.message);
+                document.getElementById('signup-error').textContent = error.message;
+            }
+        });
+
+        // Login Form
+        document.getElementById('login-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            try {
+                // Sign in the user
+                const { data, error } = await supabase.auth.signInWithPassword({
+                    email: email,
+                    password: password
+                });
+
+                if (error) throw error;
+                
+                // If successful, redirect to home page
+                console.log('Login successful!', data);
+                window.location.href = '/index.html';
+            } catch (error) {
+                console.error('Error during login:', error.message);
+                document.getElementById('login-error').textContent = error.message;
+            }
+        });
+    </script>
 </body>
 </html>
