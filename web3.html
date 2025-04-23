@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web3 Travel Pass - Travel Crew</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.10.0/dist/ethers.umd.min.js"></script>
+    <link rel="stylesheet" href="web3.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f8f8f8;
+            background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url("Images/States/Goa/main.jpg");
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            padding: 15px 40px;
+            background-color: #f8f9fa;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .brand {
+            font-size: 20px;
+            color: #333;
+            text-decoration: none;
+            margin-right: auto;
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #333;
+        }
+
+        .nav-links a.active {
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .wallet-badge {
+            background: #0052FF;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .web3-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .connect-btn {
+            background: #0052FF;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 20px auto;
+        }
+        
+        .connect-btn:hover {
+            background: #0040CC;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 82, 255, 0.4);
+        }
+        
+        .nft-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .nft-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .nft-image {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        
+        .view-on-basescan {
+            color: #0052FF;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .view-on-basescan:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <a href="index.html" class="brand">Travel Crew</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="destinations.html">Group Tours</a></li>
+            <li><a href="customised-tours.html">Customised Tours</a></li>
+            <li><a href="aboutUs.html">About Us</a></li>
+            <li><a href="web3.html" class="active">Web3 Travel Pass</a></li>
+            <li><a href="login.html" id="auth-link">Log In / Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <div class="web3-container">
+        <h1 class="text-center mb-4">Web3 Travel Pass</h1>
+        <p class="text-center mb-4">Book your trips on the blockchain and receive NFT tickets as proof of travel!</p>
+        
+        <button id="connectBtn" class="connect-btn">Connect Wallet</button>
+        
+        <div id="walletInfo" class="text-center" style="display: none;">
+            <p>Connected Wallet: <span id="walletAddress"></span></p>
+        </div>
+        
+        <div id="packages" class="row" style="display: none;">
+            <!-- Packages will be dynamically loaded here -->
+        </div>
+        
+        <div id="nftDisplay" class="text-center" style="display: none;">
+            <h3>Your Travel NFT</h3>
+            <div class="nft-card">
+                <img id="nftImage" class="nft-image" src="" alt="Travel NFT">
+                <p id="nftDetails"></p>
+                <a id="basescanLink" class="view-on-basescan" href="#" target="_blank">View on BaseScan</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="web3.js"></script>
+</body>
+</html> 
