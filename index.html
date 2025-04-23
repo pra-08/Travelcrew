@@ -18,17 +18,59 @@
             background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url("Images/States/Goa/main.jpg");
         }
         
+        .nav-container {
+            display: flex;
+            align-items: center;
+            padding: 15px 40px;
+            background-color: #f8f9fa;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .brand {
+            font-size: 20px;
+            color: #333;
+            text-decoration: none;
+            margin-right: auto;
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #333;
+        }
+
+        .nav-links a.active {
+            color: #333;
+            font-weight: 500;
+        }
+        
         header {
             position: relative;
             z-index: 10;
         }
         
         .navbar {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.8) !important;
             padding: 1em 0;
             text-align: center;
             justify-content: center;
             align-items: center;
+            position: relative;
+            z-index: 1000;
         }
         
         nav ul {
@@ -43,9 +85,53 @@
             margin: 0 15px;
         }
         
-        nav ul li a {
-            color: #757070;
+        .nav-link {
+            color: #757070 !important;
             text-decoration: none;
+            position: relative;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #7859ea;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #7859ea !important;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            color: #7859ea !important;
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .navbar-brand {
+            color: #333 !important;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .navbar-toggler {
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
         
         #home {
@@ -56,7 +142,7 @@
             padding: 100px 20px;
             text-align: center;
             height: 100vh;
-            margin-top: -70px;
+            margin-top: 0;
         }
         
         input, textarea {
@@ -106,22 +192,22 @@
         }
     
         .nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255,255,255,0.8);
             border: none;
-            padding: 10px;
-            font-size: 20px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
     
-        .prev-btn {
-            left: 0;
-        }
-    
-        .next-btn {
-            right: 0;
+        .nav-btn:hover {
+            background: #7859ea;
+            color: white;
+            transform: scale(1.1);
         }
 
         .modal-dialog {
@@ -201,20 +287,92 @@
             display: flex;
             justify-content: center;
         }
+
+        /* Enhanced Button Styles */
+        button {
+            border: none;
+            border-radius: 30px;
+            background-color: #7859ea;
+            padding: 10px 20px;
+            cursor: pointer;
+            color: #f9f7fb;
+            text-transform: uppercase;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        button:hover {
+            background-color: #5d3fd3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(93, 63, 211, 0.4);
+        }
+        
+        button:hover::before {
+            left: 100%;
+        }
+        
+        /* Enhanced Card Styles */
+        .box1 {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .box1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .box1:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .box1:hover::before {
+            opacity: 1;
+        }
+        
+        .box1 img {
+            transition: transform 0.3s ease;
+        }
+        
+        .box1:hover img {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <ul id="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="destinations.html">Group Tours</a></li>
-                <li><a href="#" data-bs-toggle="modal" data-bs-target="#customTripModal">Customised Tours</a></li>
-                <li><a href="aboutUs.html">About Us</a></li>
-                <li><a href="login.html" id="auth-link">Log In / Sign Up</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav class="nav-container">
+        <a href="index.html" class="brand">Travel Crew</a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="destinations.html">Group Tours</a></li>
+            <li><a href="customised-tours.html">Customised Tours</a></li>
+            <li><a href="aboutUs.html">About Us</a></li>
+            <li><a href="web3.html">Web3 Travel Pass</a></li>
+            <li><a href="login.html" id="auth-link">Log In / Sign Up</a></li>
+        </ul>
+    </nav>
 
     <section id="home">
         <h1 style="font-size:xx-large;"><b>Welcome to Travel Crew</b></h1>
@@ -299,155 +457,113 @@
         </div>
     </div>
 
-    <!-- Slider JavaScript -->
-    <script>
-        const slider = document.querySelector('.slider');
-        const slides = document.querySelectorAll('.slide');
-        const slideWidth = slides[0].clientWidth;
-        let counter = 0;
-    
-        function nextSlide() {
-            if (counter >= slides.length-4) {
-                counter = 0;
-                slider.style.transition = 'none';
-                slider.style.transform = `translateX(-${slideWidth * counter}px)`;
-                setTimeout(() => {
-                    slider.style.transition = 'transform 0.5s ease';
-                }, 0);
-            } else {
-                counter++;
-                slider.style.transform = `translateX(-${slideWidth * counter}px)`;
-            }
-        }
-    
-        function prevSlide() {
-            if (counter <= 0) {
-                counter = slides.length - 1;
-                slider.style.transition = 'none';
-                slider.style.transform = `translateX(-${slideWidth * counter}px)`;
-                setTimeout(() => {
-                    slider.style.transition = 'transform 0.5s ease';
-                }, 0);
-            } else {
-                counter--;
-                slider.style.transform = `translateX(-${slideWidth * counter}px)`;
-            }
-        }
-    
-        setInterval(nextSlide, 2000);
-    </script>
-
     <!-- Supabase Authentication and Form Handling -->
     <script>
+        // Initialize Supabase client
         const supabaseUrl = 'https://whhscjpbnkgdraieveov.supabase.co';
         const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndoaHNjanBibmtnZHJhaWV2ZW92Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUzMzUyMjQsImV4cCI6MjA2MDkxMTIyNH0.dF_-m-uSsVMwyBVN8CTzqCBYYUrIFH3KfeTINlKsxns';
         const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
+        // Check authentication status and update nav menu
         async function checkUser() {
-            const { data: { session } } = await supabase.auth.getSession();
-            
-            const authLink = document.getElementById('auth-link');
-            const navMenu = document.getElementById('nav-menu');
-            
-            if (session) {
-                const { data: { user } } = await supabase.auth.getUser();
-                console.log("Logged in as:", user.email);
+            try {
+                const { data: { session }, error } = await supabase.auth.getSession();
+                const authLink = document.getElementById('auth-link');
+                const navMenu = document.getElementById('nav-menu');
                 
-                authLink.textContent = user.email;
-                authLink.href = "#";
-                
-                const logoutItem = document.createElement('li');
-                const logoutLink = document.createElement('a');
-                logoutLink.href = "#";
-                logoutLink.textContent = "Logout";
-                logoutLink.addEventListener('click', async (e) => {
-                    e.preventDefault();
-                    await supabase.auth.signOut();
-                    window.location.reload();
-                });
-                
-                logoutItem.appendChild(logoutLink);
-                navMenu.appendChild(logoutItem);
-                
-                const emailField = document.getElementById('email');
-                if (emailField) {
-                    emailField.value = user.email;
+                if (error) {
+                    console.error('Error checking auth status:', error.message);
+                    return;
                 }
                 
-                if (user.user_metadata && user.user_metadata.username) {
-                    const usernameField = document.getElementById('username');
-                    if (usernameField) {
-                        usernameField.value = user.user_metadata.username;
+                if (session) {
+                    const { data: { user }, error: userError } = await supabase.auth.getUser();
+                    if (userError) {
+                        console.error('Error getting user:', userError.message);
+                        return;
+                    }
+                    
+                    // Update auth link to show user email
+                    authLink.textContent = user.email;
+                    authLink.href = "#";
+                    
+                    // Add logout button if it doesn't exist
+                    if (!document.getElementById('logout-link')) {
+                        const logoutItem = document.createElement('li');
+                        const logoutLink = document.createElement('a');
+                        logoutLink.href = "#";
+                        logoutLink.id = 'logout-link';
+                        logoutLink.textContent = "Logout";
+                        logoutLink.addEventListener('click', async (e) => {
+                            e.preventDefault();
+                            try {
+                                const { error } = await supabase.auth.signOut();
+                                if (error) throw error;
+                                window.location.href = 'index.html';
+                            } catch (error) {
+                                console.error('Error signing out:', error.message);
+                            }
+                        });
+                        
+                        logoutItem.appendChild(logoutLink);
+                        navMenu.appendChild(logoutItem);
+                    }
+                } else {
+                    // User is not logged in
+                    authLink.textContent = "Log In / Sign Up";
+                    authLink.href = "login.html";
+                    
+                    // Remove logout button if it exists
+                    const logoutLink = document.getElementById('logout-link');
+                    if (logoutLink) {
+                        logoutLink.parentElement.remove();
                     }
                 }
-            } else {
-                console.log("Not logged in");
-                authLink.textContent = "Log In / Sign Up";
-                authLink.href = "login.html";
-                
-                const customTourLink = document.querySelector('a[data-bs-target="#customTripModal"]');
-                if (customTourLink) {
-                    customTourLink.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        window.location.href = "login.html";
-                    });
-                }
+            } catch (error) {
+                console.error('Error in checkUser:', error.message);
             }
         }
 
-        document.addEventListener('DOMContentLoaded', checkUser);
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const customTripForm = document.getElementById('custom-trip-form');
-            if (customTripForm) {
-                customTripForm.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    
-                    const formData = new FormData(customTripForm);
-                    const tripData = {
-                        username: formData.get('username'),
-                        mobile_number: formData.get('number'),
-                        email: formData.get('email'),
-                        starting_date: formData.get('s_date'),
-                        ending_date: formData.get('e_date'),
-                        pickup_destination: formData.get('pickup'),
-                        number_of_travellers: parseInt(formData.get('no_traveller')),
-                        trip_details: formData.get('trip_details'),
-                        created_at: new Date()
-                    };
-                    
-                    try {
-                        const { data: { session } } = await supabase.auth.getSession();
-                        if (!session) {
-                            alert('Please log in to submit a trip request');
-                            window.location.href = "login.html";
-                            return;
-                        }
-                        
-                        tripData.user_id = session.user.id;
-                        
-                        const { data, error } = await supabase
-                            .from('travel_requests')
-                            .insert([tripData]);
-                            
-                        if (error) {
-                            console.error('Supabase error details:', error);
-                            throw error;
-                        }
-                        
-                        console.log('Trip request submitted successfully:', data);
-                        alert('Your trip request has been submitted successfully!');
-                        bootstrap.Modal.getInstance(document.getElementById('customTripModal')).hide();
-                        customTripForm.reset();
-                        
-                    } catch (error) {
-                        console.error('Error submitting trip request:', error);
-                        alert('Failed to submit trip request: ' + error.message);
-                    }
-                });
-            }
+        // Check user status when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            checkUser();
+            initializeSlider();
         });
+
+        // Listen for auth state changes
+        supabase.auth.onAuthStateChange((event, session) => {
+            checkUser();
+        });
+
+        // Slider functionality
+        function initializeSlider() {
+            let currentPosition = 0;
+            const slides = document.querySelectorAll('.slide');
+            const slideWidth = 25; // 25% of container width
+
+            function nextSlide() {
+                currentPosition -= slideWidth;
+                if (currentPosition < -(slideWidth * (slides.length - 4))) {
+                    currentPosition = 0;
+                }
+                document.querySelector('.slider').style.transform = `translateX(${currentPosition}%)`;
+            }
+
+            function prevSlide() {
+                currentPosition += slideWidth;
+                if (currentPosition > 0) {
+                    currentPosition = -(slideWidth * (slides.length - 4));
+                }
+                document.querySelector('.slider').style.transform = `translateX(${currentPosition}%)`;
+            }
+
+            // Make nextSlide and prevSlide available globally
+            window.nextSlide = nextSlide;
+            window.prevSlide = prevSlide;
+
+            // Auto slide every 3 seconds
+            setInterval(nextSlide, 3000);
+        }
     </script>
 </body>
 </html>
