@@ -2,93 +2,329 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>About Us - Travel Crew</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f3f3f3;
+            color: #333;
+            background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url("Images/States/Goa/main.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
         }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            padding: 15px 40px;
+            background-color: #f8f9fa;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
-        .box {
-            margin-bottom: 20px;
-            padding: 20px;
-            background-color: #f0f0f0;
-            border-radius: 10px;
-            overflow: hidden;
+
+        .brand {
+            font-size: 20px;
+            color: #333;
+            text-decoration: none;
+            margin-right: auto;
+            font-weight: 500;
         }
-        .box img {
-            max-width: 100px;
-            border-radius: 50%;
-            float: left;
-            margin-right: 20px;
-        }
-        .box p {
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
             margin: 0;
-            line-height: 1.5;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #333;
+        }
+
+        .nav-links a.active {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-container h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .about-section {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .about-section h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .about-section p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .team-section {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .team-member {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        .social-links img {
+            width: 20px;
+            height: 20px;
         }
 
         footer {
-            background-color: #038fae; /* Moved the background color here from header, footer */
+            background-color: #038fae;
             color: #fff;
             text-align: center;
             padding: 1em 0;
-            margin-top: 20px;
+            margin-top: 50px;
         }
-        footer .social{
+
+        footer .social {
             display: flex;
             aspect-ratio: 3/2;
             object-fit: contain;
             mix-blend-mode: color-burn;
             border-radius: 50%;
-            justify-content: center;
-            align-items: center;
             height: 50px;
             width: 50px;
             margin: 10px;
         }
-        footer .foot{
+
+        footer .foot {
             display: flex;
             justify-content: center;
         }
     </style>
 </head>
 <body>
-   <div class="container">
-    <h1>About US</h1>
-       <div class="box">
-            <img src="Images/logos/DP.jpg" alt="Founder">
-            <p>We are Team Travel Crew, and we founded Travel Crew with one simple belief: that traveling isn't just about seeing new places, it's about experiencing them. My own adventures around the globe have shaped this belief, from the bustling markets of Marrakech to the tranquil temples of Kyoto. Each journey has left me with memories that have enriched my life in countless ways.            </p>
-       </div>
-       <div class="box">
-            <p>Travel Crew is my way of sharing those experiences with you. It's about more than just booking flights and hotels; it's about crafting personalized journeys that resonate with your soul. Whether you're seeking an adrenaline-fueled adventure or a serene retreat, my team and I are here to make it happen.
-                <br>
-                I know firsthand the transformative power of travel. It opens your eyes to new cultures, challenges your perspectives, and connects you with people from all walks of life. That's why every itinerary we create at Travel Crew is designed to be more than just a vacation—it's an opportunity for growth, exploration, and unforgettable moments.</p>
-       </div>
-       <div class="box">
-            <p>But Travel Crew is more than just a travel agency. It's a community of like-minded adventurers who share a passion for exploration and a thirst for discovery. Whether you're a seasoned traveler or embarking on your first journey, you're part of the Travel Crew family.</p>
-       </div>
-       <div class="box">
-            <p>So let's embark on this journey together. Let's explore the world, create memories, and make every moment count. With Travel Crew, the world is yours to discover.</p>
-       </div>
-   </div>
-   <footer>
-    <div class="foot">
-    <a href="https://www.facebook.com/profile.php?id=61556718552631&mibextid=LQQJ4d" target="_blank"><img src="Images/logos/ffb.jpg" alt="fb" class="social"></a>
-    <a href="https://www.instagram.com/travelll_crew?igsh=MWd6eWNxajc2ZmM1OQ%3D%3D&utm_source=qr" target="_blank"><img src="Images/logos/ins.jpg" alt="insta" class="social"></a>
-    <a href="https://youtube.com/@AK-0747?si=eNinZCZqZQKtBf-g" target="_blank"><img src="Images/logos/utubee.jpg" alt="youtube" class="social"></a>
+    <nav class="nav-container">
+        <a href="index.html" class="brand">Travel Crew</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="destinations.html">Group Tours</a></li>
+            <li><a href="customised-tours.html">Customised Tours</a></li>
+            <li><a href="aboutUs.html" class="active">About Us</a></li>
+            <li><a href="web3.html">Web3 Travel Pass</a></li>
+            <li><a href="login.html" id="auth-link">Log In / Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <div class="about-container">
+        <h1>About Travel Crew</h1>
+        
+        <div class="about-content">
+            <div class="about-section">
+                <h2>Our Story</h2>
+                <p>Travel Crew was founded with a passion for creating unforgettable travel experiences. We believe in making travel accessible, exciting, and meaningful for everyone. Our journey began with a simple idea: to connect travelers with authentic experiences while ensuring comfort and safety.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Our Mission</h2>
+                <p>Our mission is to provide exceptional travel experiences that combine adventure, culture, and comfort. We strive to create memories that last a lifetime while promoting responsible tourism and supporting local communities.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Why Choose Us</h2>
+                <p>
+                    • Expertly crafted itineraries<br>
+                    • Personalized service<br>
+                    • Local expertise and knowledge<br>
+                    • 24/7 support during your trip<br>
+                    • Competitive pricing<br>
+                    • Sustainable tourism practices
+                </p>
+            </div>
+        </div>
+
+        <div class="team-section">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                   
+                    <h3>Achyut Mukund</h3>
+                    <p>Founder & CEO</p>
+                </div>
+                <div class="team-member">
+                   
+                    <h3>Pranav Prakash</h3>
+                    <p>Travel Expert</p>
+                </div>
+                <div class="team-member">
+                    
+                    <h3>Ansh Agrawal</h3>
+                    <p>Tour Guide</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <p>&copy; 2025 Travel Agency. All rights reserved.</p>
-</footer>
+
+    <footer>
+        <div class="foot">
+            <a href="https://www.facebook.com/profile.php?id=61556718552631&mibextid=LQQJ4d" target="_blank">
+                <img src="Images/logos/ffb.jpg" alt="fb" class="social">
+            </a>
+            <a href="https://www.instagram.com/travelll_crew?igsh=MWd6eWNxajc2ZmM1OQ%3D%3D&utm_source=qr" target="_blank">
+                <img src="Images/logos/ins.jpg" alt="insta" class="social">
+            </a>
+            <a href="https://youtube.com/@AK-0747?si=eNinZCZqZQKtBf-g" target="_blank">
+                <img src="Images/logos/utubee.jpg" alt="youtube" class="social">
+            </a>
+        </div>
+        <p>&copy; 2025 Travel Agency. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Initialize Supabase client
+        const supabaseUrl = 'https://whhscjpbnkgdraieveov.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndoaHNjanBibmtnZHJhaWV2ZW92Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUzMzUyMjQsImV4cCI6MjA2MDkxMTIyNH0.dF_-m-uSsVMwyBVN8CTzqCBYYUrIFH3KfeTINlKsxns';
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        // Check authentication status and update nav menu
+        async function checkUser() {
+            try {
+                const { data: { session }, error } = await supabase.auth.getSession();
+                const authLink = document.getElementById('auth-link');
+                const navMenu = document.querySelector('.nav-links');
+                
+                if (error) {
+                    console.error('Error checking auth status:', error.message);
+                    return;
+                }
+                
+                if (session) {
+                    const { data: { user }, error: userError } = await supabase.auth.getUser();
+                    if (userError) {
+                        console.error('Error getting user:', userError.message);
+                        return;
+                    }
+                    
+                    // Update auth link to show user email
+                    authLink.textContent = user.email;
+                    authLink.href = "#";
+                    
+                    // Add logout button if it doesn't exist
+                    if (!document.getElementById('logout-link')) {
+                        const logoutItem = document.createElement('li');
+                        const logoutLink = document.createElement('a');
+                        logoutLink.href = "#";
+                        logoutLink.id = 'logout-link';
+                        logoutLink.textContent = "Logout";
+                        logoutLink.addEventListener('click', async (e) => {
+                            e.preventDefault();
+                            try {
+                                const { error } = await supabase.auth.signOut();
+                                if (error) throw error;
+                                window.location.href = 'index.html';
+                            } catch (error) {
+                                console.error('Error signing out:', error.message);
+                            }
+                        });
+                        
+                        logoutItem.appendChild(logoutLink);
+                        navMenu.appendChild(logoutItem);
+                    }
+                } else {
+                    // User is not logged in
+                    authLink.textContent = "Log In / Sign Up";
+                    authLink.href = "login.html";
+                    
+                    // Remove logout button if it exists
+                    const logoutLink = document.getElementById('logout-link');
+                    if (logoutLink) {
+                        logoutLink.parentElement.remove();
+                    }
+                }
+            } catch (error) {
+                console.error('Error in checkUser:', error.message);
+            }
+        }
+
+        // Check user status when page loads
+        document.addEventListener('DOMContentLoaded', checkUser);
+    </script>
 </body>
 </html>
