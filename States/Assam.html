@@ -29,6 +29,8 @@
         }
 
         .box1 {
+            position: relative;
+            overflow: hidden;
             height: auto; /* Changed height to auto for responsiveness */
             max-width: 250px;
             border-radius: 10px;
@@ -42,6 +44,84 @@
 
         .box1:hover {
             transform: translateY(-5px);
+        }
+
+        .box1 .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .box1:hover .overlay {
+            opacity: 1;
+        }
+        
+        .box1 .overlay-content {
+            color: white;
+            text-align: center;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .box1:hover .overlay-content {
+            transform: translateY(0);
+        }
+        
+        .box1 .quick-details-btn {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            margin-top: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .box1:hover .quick-details-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .box1 .quick-details-btn:hover {
+            background: white;
+            color: #7859ea;
+        }
+        
+        .price-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #7859ea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        
+        .box1:hover .price-tag {
+            transform: scale(1);
+        }
+        
+        .duration-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
         }
 
         .box1 h1 {
@@ -107,15 +187,16 @@
         In terms of domain names, entities based in Assam can use the .in domain to denote their Indian affiliation. Similarly, they can use .com or other generic top-level domains (TLDs) for their websites, depending on their preferences and the nature of their online presence.</h3>
     <div class="main1">
         <div class="box1">
+            <div class="duration-badge">6D / 5N</div>
+            <div class="price-tag">₹6999</div>
             <img id="b1" src="../Images/States/Assam/kakochang.jpg" alt="">
-            <h1>Kamakhya-Kaziranga-Kakochang</h1>
-            <h3>6D / 5N</h3><br><br>
-            <h3>Accommodation | Breakfast | Lunch | AC Transport | Sight Seeing</h3>
-            <br><br>
-            <h3 style="color: #ff4646;">₹6999</h3>
-            <br><br>
-            <a href="../States Trip Details/Assam/Kam-Kaz-Kako.html" target="_blank"><button>Quick Details >></button></a>
-            <br><br>
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h1>Kamakhya-Kaziranga-Kakochang</h1>
+                    <h3>Accommodation | Breakfast | Lunch | AC Transport | Sight Seeing</h3>
+                    <button class="quick-details-btn">Quick Details</button>
+                </div>
+            </div>
             <a href="http://127.0.0.1:5500/Travel%20Crew/payment.html"><button>Book Trip</button></a>
         </div>
     </div>
